@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "allowJs": true,
+    "checkJs": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "strict": true,
+
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "inlineSourceMap": true,
+    "module": "commonjs",
+    // "noStrictGenericChecks": true,
+    "noUncheckedIndexedAccess": true,
+    "outDir": "./built",
+    "target": "es2019",
+    "typeRoots": ["./node_modules/@types"],
+    "paths": {}
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["./node_modules", "./built"]
+}

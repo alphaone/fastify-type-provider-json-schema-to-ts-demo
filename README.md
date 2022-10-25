@@ -2,13 +2,20 @@
 
 This is using fastify and
 [fastify-type-provider-json-schema-to-ts](https://github.com/fastify/fastify-type-provider-json-schema-to-ts).
-It illustrates the problems with infering the Typescript types from the
-provided JSON schemas.
+It illustrates the type inferring from the provided JSON schemas.
 
-## Types are not correctly inferred :\
+## Note
 
-despite using the example from https://github.com/fastify/fastify-type-provider-json-schema-to-ts#plugin-definition
-I get no types inferred from the schema:
+I did not get this to work, until I realized that I had a problem in my [tsconfig.json](./tsconfig.json):
+
+```
+  "noStrictGenericChecks": true, // will render the whole thing unusable
+```
+
+## Types are correctly inferred
+
+Using the example from https://github.com/fastify/fastify-type-provider-json-schema-to-ts#plugin-definition
+I get types inferred from the schema:
 
 ```Typescript
 export const plugin: FastifyPluginAsyncJsonSchemaToTs = async (
@@ -50,7 +57,9 @@ export const plugin: FastifyPluginAsyncJsonSchemaToTs = async (
 };
 ```
 
-Defining the route like this also does not bring any difference:
+Defining the route like this (based on the docs from
+https://www.fastify.io/docs/latest/Reference/Type-Providers/#json-schema-to-ts)
+also works:
 
 ```Typescript
 export async function someRoutes(fastify: FastifyInstance) {
@@ -116,4 +125,3 @@ curl -H "baz:123" "http://localhost:3000/test2?foo=123&bar=abc"
 ```bash
 curl "http://localhost:3000/api-docs"
 ```
-# fastify-type-provider-json-schema-to-ts-demo

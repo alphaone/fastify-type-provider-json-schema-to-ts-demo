@@ -1,0 +1,9 @@
+built
+coverage
+data
+node_modules
+swagger.json
+generated
+.cache
+.env
+.npmrc
